@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+		
+	</div>
+	<div class="container"></div>
+
+	<!--Botones  -->
+	!
+	<a class="btn btn-outline-primary btn-sm"
+		th:href="@{/views/pasajeros/create}" th:text="'Nuevo Pasajero'"
+		title="Crear Nuevo Pasajero"> </a>
+
+	<table class="table">
+	
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Cédula</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">Teléfono</th>
+			    <th scope="col">Celular</th>
+				<th scope="col">Correo</th>
+				
+				<!-- 				¡--Botones -->
+				<th scope="col">Editar</th>
+				<th scope="col">Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pjr:${pasajeros}">
+				<th scope="row" th:text="${pjr.idPasajero}"></th>
+				<td th:text="${pjr.cedula}"></td>
+				<td th:text="${pjr.nombre}"></td>
+				<td th:text="${pjr.apellido}"></td>
+				 <td th:text="${pjr.telefono}"></td>
+		        <td th:text="${pjr.celular}"></td>
+				<td th:text="${pjr.correo}"></td>
+				
+				
+				
+				<!-- 				¡--Botones -->
+				<td><a class="btn btn-outline-success btn-sm"
+					th:href="@{/views/pasajeros/edit/} +${pjr.idPasajero}" th:text="'Editar'"
+					title="Crear Nuevo Pasajero"> </a>
+					</td>
+					
+				<td>
+				<a class="btn btn-outline-danger btn-sm"
+					th:href="@{/views/pasajeros/delete/} +${pjr.idPasajero}" th:text="'Eliminar'"
+					title="Crear Nuevo Pasajero"> 
+					</a>
+				
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
+
+
+
+

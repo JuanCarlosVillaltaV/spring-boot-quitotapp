@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<h1>Paradas</h1>
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+
+                 
+			
+				<form th:action="@{/views/paradas/save}" th:object="${parada}" method="post">
+
+                      <input type="hidden" th:field="*{idParada}">
+							
+							
+					<div class="form-group">
+						<label for="nombre"></label> <input type="text"
+							th:field="*{nombre}"
+							class="form-control form-control-sm col-md-3" id="nombre"
+							placeholder="Nombre">
+							
+							<small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('nombre')}" 
+					        th:errors="*{nombre}">
+					        </small>
+					</div>
+
+					<div class="form-group">
+						<label for="direccion"></label> <input type="text"
+							th:field="*{direccion}"
+							class="form-control form-control-sm col-md-3" id="direccion"
+							placeholder="Dirección"> 
+							<small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('direccion')}" 
+					        th:errors="*{direccion}">
+					        </small>
+					</div>
+
+					<div class="form-group">
+						<label for="ubicacion"></label> <input type="text"
+							th:field="*{ubicacion}"
+							class="form-control form-control-sm col-md-3" id="ubicacion"
+							placeholder="Ubicación">
+							
+							<small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('ubicacion')}" 
+					        th:errors="*{ubicacion}">
+					        </small>
+							
+					</div>
+
+					<div class="form-group">
+						<label for="estadoRegistro"></label> <input type="text"
+							th:field="*{estadoRegistro}"
+							class="form-control form-control-sm col-md-3" id="estadoRegistro"
+							placeholder="Estado"> 
+							
+							<small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('estadoRegistro')}" 
+					        th:errors="*{estadoRegistro}">
+					        </small>
+							
+					</div>
+
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-outline-primary btn-sm"
+							value="Guardar">
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+
+<div class="container">
+<div class="card bg-light">
+<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+<div class="card-body">
+<h1>Registro de Pasajeros</h1>
+</div>
+
+</div>
+
+<form th:action="@{/views/pasajeros/save}" th:object="${pasajero}" method="post">
+
+  <div class="form-group row">
+  <input type="hidden" th:field="*{idPasajero}" >
+    <label class="col-md-2" 
+    for="cedula"></label>
+    <input type="text" th:field="*{cedula}" 
+    class="form-control form-control-sm col-md-3"
+     id="cedula" 
+      placeholder="Cédula">
+      
+                         <small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('cedula')}" 
+					        th:errors="*{cedula}">
+					        </small>
+  </div>
+  
+  <div class="form-group row">
+    <label class="col-md-2" 
+    for="nombre"></label>
+    <input type="text" th:field="*{nombre}"
+       class="form-control form-control-sm col-md-3"
+     id="nombre" 
+      placeholder="Nombre">
+                            <small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('nombre')}" 
+					        th:errors="*{nombre}">
+					        </small>
+  </div>
+  
+  <div class="form-group row">
+    <label class="col-md-2" 
+    for="apellido"></label>
+    <input type="text" th:field="*{apellido}"
+     class="form-control form-control-sm col-md-3"
+     id="apellido" 
+      placeholder="Apellido">
+                           <small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('apellido')}" 
+					        th:errors="*{apellido}">
+					        </small>
+  </div>
+  
+  <div class="form-group row">
+    <label class="col-md-2" 
+    for="telefono"></label>
+    <input type="text" th:field="*{telefono}"
+     class="form-control form-control-sm col-md-3"
+     id="telefono" 
+      placeholder="Teléfono">
+                            <small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('telefono')}" 
+					        th:errors="*{telefono}">
+					        </small>
+  </div>
+  
+  <div class="form-group row">
+    <label class="col-md-2" 
+    for="celular"></label>
+    <input type="text" th:field="*{celular}"
+    class="form-control form-control-sm col-md-3"
+     id="celular" 
+      placeholder="Celular">
+                           <small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('celular')}" 
+					        th:errors="*{celular}">
+					        </small>
+  </div>
+  
+  <div class="form-group row">
+    <label class="col-md-2" 
+    for="correo"></label>
+    <input type="email" th:field="*{correo}"
+    class="form-control form-control-sm col-md-3"
+     id="correo" 
+      placeholder="Correo">
+                           <small  class="form-text text-danger" 
+					        th:if="${#fields.hasErrors('correo')}" 
+					        th:errors="*{correo}">
+					        </small>
+  </div>
+
+
+
+			<div class="card-footer bg-dark">
+				<input type="submit" class="btn btn-outline-primary btn-sm"
+					value="Guardar">
+			</div>
+
+
+		</form>
+		</div>
+
+
+<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

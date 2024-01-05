@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+		
+	</div>
+
+	<div class="container">
+
+		<a class="btn btn-outline-primary btn-sm" 
+		th:href="@{/views/paradas/create}"
+			th:text="'Nueva Parada'" 
+			title="Crear Nuevo Registro"> </a>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Dirección</th>
+					<th scope="col">Ubicación</th>
+					<th scope="col">Estado</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="prd:${paradas}">
+					<th scope="row" th:text="${prd.idParada}"></th>
+					<td th:text="${prd.nombre}"></td>
+					<td th:text="${prd.direccion}"></td>
+					<td th:text="${prd.ubicacion}"></td>
+					<td th:text="${prd.estadoRegistro}"></td>
+					
+					<td><a class="btn btn-outline-success btn-sm"
+						th:href="@{/views/paradas/edit/} + ${prd.idParada}" th:text="'Editar'"
+						title="Editar registro Parada" onclick="return confirm('Desea editar el registro');"> </a></td>
+						
+						<td>
+					<a class="btn btn-outline-danger btn-sm"
+						th:href="@{/views/paradas/delete/} + ${prd.idParada}" th:text="'Borrar'"
+						title="Eliminar registro Parada" onclick="return confirm('Desea eliminar el registro');" > 
+						</a>
+						</td>
+
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

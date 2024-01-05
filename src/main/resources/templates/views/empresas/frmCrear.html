@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+				<div class="card-body">
+				
+				<form th:action="@{/views/empresas/save}" th:object="${empresa}" method="post">
+				
+					<div class="form-group row">
+					
+					<input type="hidden" th:field="*{idEmpresa}"> 
+							
+							
+					
+					
+						<label class="col-md-2" for="ruc"> </label>
+						 <input type="text" th:field="*{ruc}"
+							class="form-control form-control-sm col-md-3" id="ruc"
+							placeholder="Ruc:"> 
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('ruc')}"
+							th:errors="*{ruc}">
+							</small>
+					</div>
+				
+				
+				
+				
+					<div class="form-group row">
+						<label class="col-md-2" for="nombre"> </label>
+						 <input type="text" th:field="*{nombre}"
+							class="form-control form-control-sm col-md-3" id="nombre"
+							placeholder="Nombre:"> 
+                          <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+							th:errors="*{nombre}">
+							</small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="direccion"> </label> 
+						<input type="text" th:field="*{direccion}"
+						class="form-control form-control-sm col-md-3"
+							id="direccion" placeholder="Dirección:"> 
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}"
+							th:errors="*{direccion}">
+							</small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="telefono"> </label> 
+						<input type="text" th:field="*{telefono}"
+						 class="form-control form-control-sm col-md-3"
+							id="telefono" placeholder="Teléfono:"> 
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}"
+							th:errors="*{telefono}">
+							</small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="correo"> </label>
+						 <input	type="email" th:field="*{correo}"
+						 class="form-control form-control-sm col-md-3"
+							id="correo" placeholder="Correo:"> 
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('correo')}"
+							th:errors="*{correo}">
+							</small>
+					</div>
+
+					<div class="card-footer bg-dark">
+					<input type="submit" class="btn btn-outline-primary btn-sm"
+					 value="Guardar">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

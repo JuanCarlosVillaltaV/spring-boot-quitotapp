@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+		
+	</div>
+	<div class="container"></div>
+
+	<!--Botones  -->
+	
+	<a class="btn btn-outline-primary btn-sm"
+		th:href="@{/views/choferes/create}" th:text="'Nuevo Chofer'"
+		title="Crear Nuevo Chofer"> </a>
+
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">Cédula</th>
+				<th scope="col">Celular</th>
+				<th scope="col">Correo</th>
+				<th scope="col">Estado</th>
+				<!-- 				¡--Botones -->
+				<th scope="col">Editar</th>
+				<th scope="col">Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cfr:${choferes}">
+				<th scope="row" th:text="${cfr.idChofer}"></th>
+				<td th:text="${cfr.nombre}"></td>
+				<td th:text="${cfr.apellido}"></td>
+				<td th:text="${cfr.cedula}"></td>
+				<td th:text="${cfr.celular}"></td>
+				<td th:text="${cfr.correo}"></td>
+				<td th:text="${cfr.estadoRegistro}"></td>
+				
+				
+				<!-- 				¡--Botones -->
+				<td><a class="btn btn-outline-success btn-sm"
+					th:href="@{/views/choferes/edit/} +${cfr.idChofer}" th:text="'Editar'"
+					title="Crear Nuevo Chofer"> </a>
+					</td>
+					
+				<td>
+				<a class="btn btn-outline-danger btn-sm"
+					th:href="@{/views/choferes/delete/} +${cfr.idChofer}" th:text="'Eliminar'"
+					title="Crear Nuevo Chofer"> 
+					</a>
+				
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

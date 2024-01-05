@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+	
+	</div>
+
+	<div class="container">
+	
+	<a class="btn btn-outline-primary btn-sm" 
+		th:href="@{/views/rutas/create}"
+			th:text="'Nueva Ruta'" 
+			title="Crear Nuevo Registro"> </a>
+			
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">Origen</th>
+					<th scope="col">Arribo</th>
+					<th scope="col">Ubicación</th>
+					<th scope="col">Estado</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="rta:${rutas}">
+				<th scope="row" th:text="${rta.idRuta}"></th>
+					
+					<td th:text="${rta.descripcion}"></td>
+					<td th:text="${rta.fecha}"></td>
+					<td th:text="${rta.origen}"></td>
+					<td th:text="${rta.arribo}"></td>
+					<td th:text="${rta.ubicacion}"></td>
+					<td th:text="${rta.estadoRegistro}"></td>
+					
+					<td><a class="btn btn-outline-success btn-sm"
+						th:href="@{/views/rutas/edit/} + ${rta.idRuta}" th:text="'Editar'"
+						title="Editar registro Ruta" onclick="return confirm('Desea editar el registro');"> </a></td>
+						
+						<td>
+					<a class="btn btn-outline-danger btn-sm"
+						th:href="@{/views/rutas/delete/} + ${rta.idRuta}" th:text="'Borrar'"
+						title="Eliminar registro Ruta" onclick="return confirm('Desea eliminar el registro');" > 
+						</a>
+						</td>
+					
+					
+
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
